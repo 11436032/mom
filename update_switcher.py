@@ -13,16 +13,22 @@ simplified_switcher = """            <!-- Baby Switcher Button -->
                 <span class="material-symbols-outlined text-primary text-[18px]">swap_horiz</span>
             </button>
             <!-- Dropdown Menu -->
-            <div id="baby-switcher-menu" class="absolute top-full right-0 mt-2 w-32 bg-white rounded-2xl shadow-xl border border-surface-container-high overflow-hidden opacity-0 pointer-events-none transition-all duration-200 z-50 transform origin-top-right scale-95">
-                <div class="max-h-48 overflow-y-auto hide-scrollbar">
+            <div id="baby-switcher-menu" class="absolute top-full right-0 mt-2 w-40 bg-white rounded-2xl shadow-xl border border-surface-container-high overflow-hidden opacity-0 pointer-events-none transition-all duration-200 z-50 transform origin-top-right scale-95">
+                <div class="max-h-56 overflow-y-auto hide-scrollbar flex flex-col">
                     <button class="w-full text-left px-4 py-3 bg-primary/5 flex items-center justify-between border-b border-surface-container-highest cursor-pointer">
                         <span class="text-sm font-bold text-primary">小寶</span>
                         <span class="material-symbols-outlined text-primary text-[16px]">check</span>
                     </button>
-                    <button class="w-full text-left px-4 py-3 hover:bg-primary/5 transition-colors flex items-center justify-between cursor-pointer">
+                    <button class="w-full text-left px-4 py-3 hover:bg-primary/5 transition-colors flex items-center justify-between border-b border-surface-container-highest cursor-pointer">
                         <span class="text-sm font-bold text-on-surface">大寶</span>
                     </button>
-            """
+                    <!-- New Links -->
+                    <button onclick="window.location.href='add_pregnancy_baby.html'" class="w-full text-left px-4 py-3 hover:bg-primary/5 transition-colors flex items-center gap-2 cursor-pointer">
+                        <span class="material-symbols-outlined text-[16px] text-primary">pregnant_woman</span>
+                        <span class="text-[13px] font-bold text-primary">新增胎數與小孩</span>
+                    </button>
+                </div>
+            </div>"""
 
 changed = 0
 for filepath in glob.glob(os.path.join(directory, '*.html')):
@@ -35,7 +41,7 @@ for filepath in glob.glob(os.path.join(directory, '*.html')):
     pattern = r'<!-- Baby Switcher Button -->.*?<!-- Dropdown Menu -->.*?<div id="baby-switcher-menu".*?>.*?</div>\s*</div>'
     
     if re.search(pattern, content, re.DOTALL):
-        new_content = re.sub(pattern, simplified_switcher + "\n    </div>", content, flags=re.DOTALL)
+        new_content = re.sub(pattern, simplified_switcher, content, flags=re.DOTALL)
         if new_content != content:
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(new_content)

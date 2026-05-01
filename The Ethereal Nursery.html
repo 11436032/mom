@@ -133,26 +133,35 @@
             <h1 class="font-['Plus_Jakarta_SANS'] font-semibold tracking-tight text-lg text-[#65518a]">新增產檢紀錄</h1>
         </div>
             <div class="flex items-center gap-3 relative">
-                        <!-- Baby Switcher Button -->
+                                    <!-- Baby Switcher Button -->
             <button id="baby-switcher-btn" class="flex items-center gap-1.5 bg-primary/10 px-3 py-1.5 rounded-full hover:bg-primary/20 transition-colors cursor-pointer group">
                 <div class="w-5 h-5 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
                     <span class="material-symbols-outlined text-primary text-[14px]">face</span>
                 </div>
                 <span class="text-[13px] font-bold text-primary">小寶</span>
-                </button>
+                <span class="material-symbols-outlined text-primary text-[18px]">swap_horiz</span>
+            </button>
             <!-- Dropdown Menu -->
-            <div id="baby-switcher-menu" class="absolute top-full right-0 mt-2 w-32 bg-white rounded-2xl shadow-xl border border-surface-container-high overflow-hidden opacity-0 pointer-events-none transition-all duration-200 z-50 transform origin-top-right scale-95">
-                <div class="max-h-48 overflow-y-auto hide-scrollbar">
+            <div id="baby-switcher-menu" class="absolute top-full right-0 mt-2 w-40 bg-white rounded-2xl shadow-xl border border-surface-container-high overflow-hidden opacity-0 pointer-events-none transition-all duration-200 z-50 transform origin-top-right scale-95">
+                <div class="max-h-56 overflow-y-auto hide-scrollbar flex flex-col">
                     <button class="w-full text-left px-4 py-3 bg-primary/5 flex items-center justify-between border-b border-surface-container-highest cursor-pointer">
                         <span class="text-sm font-bold text-primary">小寶</span>
                         <span class="material-symbols-outlined text-primary text-[16px]">check</span>
                     </button>
-                    <button class="w-full text-left px-4 py-3 hover:bg-primary/5 transition-colors flex items-center justify-between cursor-pointer">
+                    <button class="w-full text-left px-4 py-3 hover:bg-primary/5 transition-colors flex items-center justify-between border-b border-surface-container-highest cursor-pointer">
                         <span class="text-sm font-bold text-on-surface">大寶</span>
                     </button>
-            
-    </div>
-        </div>
+                    <!-- New Links -->
+                    <button onclick="window.location.href='add_pregnancy_case.html'" class="w-full text-left px-4 py-3 hover:bg-primary/5 transition-colors flex items-center gap-2 cursor-pointer border-b border-surface-container-highest">
+                        <span class="material-symbols-outlined text-[16px] text-primary">pregnant_woman</span>
+                        <span class="text-[13px] font-bold text-primary">新增胎數</span>
+                    </button>
+                    <button onclick="window.location.href='add_baby_profile.html'" class="w-full text-left px-4 py-3 hover:bg-primary/5 transition-colors flex items-center gap-2 cursor-pointer">
+                        <span class="material-symbols-outlined text-[16px] text-secondary">child_care</span>
+                        <span class="text-[13px] font-bold text-secondary">新增小孩</span>
+                    </button>
+                </div>
+            </div>
     </header>
     <main class="pt-24 pb-32 px-6 max-w-2xl mx-auto space-y-8">
         <!-- Official Check-up Toggle Section -->

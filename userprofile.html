@@ -130,26 +130,31 @@
             <span class="font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-xl text-[#65518a]">AuraLink</span>
         </div>
             <div class="flex items-center gap-3 relative">
-                        <!-- Baby Switcher Button -->
+                                    <!-- Baby Switcher Button -->
             <button id="baby-switcher-btn" class="flex items-center gap-1.5 bg-primary/10 px-3 py-1.5 rounded-full hover:bg-primary/20 transition-colors cursor-pointer group">
                 <div class="w-5 h-5 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
                     <span class="material-symbols-outlined text-primary text-[14px]">face</span>
                 </div>
                 <span class="text-[13px] font-bold text-primary">小寶</span>
-                </button>
+                <span class="material-symbols-outlined text-primary text-[18px]">swap_horiz</span>
+            </button>
             <!-- Dropdown Menu -->
-            <div id="baby-switcher-menu" class="absolute top-full right-0 mt-2 w-32 bg-white rounded-2xl shadow-xl border border-surface-container-high overflow-hidden opacity-0 pointer-events-none transition-all duration-200 z-50 transform origin-top-right scale-95">
-                <div class="max-h-48 overflow-y-auto hide-scrollbar">
+            <div id="baby-switcher-menu" class="absolute top-full right-0 mt-2 w-40 bg-white rounded-2xl shadow-xl border border-surface-container-high overflow-hidden opacity-0 pointer-events-none transition-all duration-200 z-50 transform origin-top-right scale-95">
+                <div class="max-h-56 overflow-y-auto hide-scrollbar flex flex-col">
                     <button class="w-full text-left px-4 py-3 bg-primary/5 flex items-center justify-between border-b border-surface-container-highest cursor-pointer">
                         <span class="text-sm font-bold text-primary">小寶</span>
                         <span class="material-symbols-outlined text-primary text-[16px]">check</span>
                     </button>
-                    <button class="w-full text-left px-4 py-3 hover:bg-primary/5 transition-colors flex items-center justify-between cursor-pointer">
+                    <button class="w-full text-left px-4 py-3 hover:bg-primary/5 transition-colors flex items-center justify-between border-b border-surface-container-highest cursor-pointer">
                         <span class="text-sm font-bold text-on-surface">大寶</span>
                     </button>
-            
-    </div>
-        </div>
+                    <!-- New Links -->
+                    <button onclick="window.location.href='add_pregnancy_baby.html'" class="w-full text-left px-4 py-3 hover:bg-primary/5 transition-colors flex items-center gap-2 cursor-pointer">
+                        <span class="material-symbols-outlined text-[16px] text-primary">pregnant_woman</span>
+                        <span class="text-[13px] font-bold text-primary">新增胎數與小孩</span>
+                    </button>
+                </div>
+            </div>
     </header>
     <main class="px-6 py-8 space-y-6 mx-auto max-w-md md:max-w-2xl lg:max-w-3xl mx-auto w-full transition-all duration-500 ease-in-out">
         <!-- Unified Profile & Pregnancy Container -->
@@ -233,11 +238,56 @@
                 </div>
             </div>
         </section>
-        <!-- Mood Journey Section -->
+        <!-- Helper List Section -->
+        <section class="bg-surface-container-lowest rounded-lg shadow-[0_20px_40px_rgba(46,47,45,0.06)] overflow-hidden">
+            <div class="p-8 pb-6 flex justify-between items-center border-b border-surface-container-high/50">
+                <div class="space-y-1">
+                    <h3 class="font-bold text-on-surface text-lg">協助者名單</h3>
+                    <p class="text-xs text-on-surface-variant font-medium">共同管理寶寶紀錄的家人</p>
+                </div>
+                <button class="bg-primary/10 text-primary p-2.5 rounded-full hover:bg-primary/20 transition-colors shadow-sm cursor-pointer">
+                    <span class="material-symbols-outlined text-[20px]" data-icon="person_add">person_add</span>
+                </button>
+            </div>
+            <div class="p-4 space-y-2">
+                <!-- Helper 1 (Husband) -->
+                <div class="flex items-center justify-between p-4 bg-surface-container-low/50 hover:bg-surface-container-low rounded-2xl transition-colors">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center font-bold text-lg">
+                            <span class="material-symbols-outlined text-[22px]">face</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-sm font-bold text-on-surface">張偉明</span>
+                            <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider mt-0.5">爸爸 (共同管理者)</span>
+                        </div>
+                    </div>
+                    <button class="text-on-surface-variant/50 hover:text-error transition-colors p-2">
+                        <span class="material-symbols-outlined text-[20px]">remove_circle_outline</span>
+                    </button>
+                </div>
+                
+                <!-- Helper 2 (Grandma) -->
+                <div class="flex items-center justify-between p-4 bg-surface-container-low/50 hover:bg-surface-container-low rounded-2xl transition-colors">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-secondary/10 text-secondary rounded-full flex items-center justify-center font-bold text-lg">
+                            <span class="material-symbols-outlined text-[22px]">face_3</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-sm font-bold text-on-surface">阿嬤 (淑芬)</span>
+                            <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider mt-0.5">阿嬤 (僅檢視)</span>
+                        </div>
+                    </div>
+                    <button class="text-on-surface-variant/50 hover:text-error transition-colors p-2">
+                        <span class="material-symbols-outlined text-[20px]">remove_circle_outline</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <!-- Action Area -->
         <section class="flex flex-col items-center pt-2">
-            <button
-                class="bg-primary/10 text-primary px-10 py-3.5 rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all duration-300 shadow-sm border border-primary/20">
+            <button onclick="window.location.href='login.html'"
+                class="bg-primary/10 text-primary px-10 py-3.5 rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all duration-300 shadow-sm border border-primary/20 cursor-pointer">
                 登出帳號
             </button>
         </section>

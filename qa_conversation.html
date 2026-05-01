@@ -123,15 +123,75 @@
 
 <body class="bg-background font-body text-on-surface min-h-screen flex flex-col">
     <!-- TopAppBar -->
-    <nav class="sticky top-0 z-40 bg-[#f7f6f3]/70 backdrop-blur-md rounded-b-[3rem] shadow-[0_20px_40px_rgba(46,47,45,0.06)] flex justify-between items-center px-6 py-4 w-full md:px-[calc(50vw-21rem)] lg:px-[calc(50vw-24rem)] transition-all duration-500">
-        <div class="flex items-center gap-3"><button
-                class="w-10 h-10 flex items-center justify-center text-[#65518a] hover:bg-primary/10 rounded-full transition-colors mr-2">
+    <nav class="sticky top-0 z-30 bg-[#f7f6f3]/70 backdrop-blur-md rounded-b-[3rem] shadow-[0_20px_40px_rgba(46,47,45,0.06)] flex justify-between items-center px-6 py-4 w-full md:px-[calc(50vw-21rem)] lg:px-[calc(50vw-24rem)] transition-all duration-500">
+        <div class="flex items-center gap-3">
+            <button id="hamburger-menu-btn"
+                class="w-10 h-10 flex items-center justify-center text-[#65518a] hover:bg-primary/10 rounded-full transition-colors mr-2 cursor-pointer">
                 <span class="material-symbols-outlined">menu</span>
             </button>
             <span class="material-symbols-outlined text-[#65518a] text-2xl" data-icon="child_care">child_care</span>
             <h1 class="text-xl font-bold text-[#65518a] font-['Plus_Jakarta_Sans'] tracking-tight">AuraLink</h1>
         </div>
     </nav>
+
+    <!-- Sidebar Overlay Backdrop -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/20 z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+    <!-- Sidebar / Chat History Drawer -->
+    <aside id="history-sidebar" class="fixed inset-y-0 left-0 w-[280px] bg-surface-container-lowest shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="px-6 py-5 border-b border-surface-container-highest/30 flex justify-between items-center">
+            <h2 class="font-bold text-primary text-lg">歷史問答紀錄</h2>
+            <button id="close-sidebar-btn" class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer p-1 rounded-full hover:bg-surface-container-low">
+                <span class="material-symbols-outlined text-[20px]">close</span>
+            </button>
+        </div>
+        <div class="flex-grow overflow-y-auto px-4 py-4 space-y-6 hide-scrollbar">
+            <!-- Today -->
+            <div class="space-y-2">
+                <h3 class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider px-2">今天</h3>
+                <button class="w-full text-left bg-primary/10 text-primary px-4 py-3 rounded-xl font-bold text-sm truncate flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[18px]">chat_bubble</span>
+                    <span class="truncate">懷孕中期運動建議</span>
+                </button>
+            </div>
+            
+            <!-- Last 7 Days -->
+            <div class="space-y-2">
+                <h3 class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider px-2">過去 7 天</h3>
+                <button class="w-full text-left hover:bg-surface-container-low text-on-surface px-4 py-3 rounded-xl font-medium text-sm transition-colors flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-primary">history</span>
+                    <span class="truncate">初期孕吐如何緩解？</span>
+                </button>
+                <button class="w-full text-left hover:bg-surface-container-low text-on-surface px-4 py-3 rounded-xl font-medium text-sm transition-colors flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-primary">history</span>
+                    <span class="truncate">葉酸和鈣片的正確吃法</span>
+                </button>
+                <button class="w-full text-left hover:bg-surface-container-low text-on-surface px-4 py-3 rounded-xl font-medium text-sm transition-colors flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-primary">history</span>
+                    <span class="truncate">推薦的孕婦枕頭品牌</span>
+                </button>
+            </div>
+
+            <!-- Last 30 Days -->
+            <div class="space-y-2">
+                <h3 class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider px-2">過去 30 天</h3>
+                <button class="w-full text-left hover:bg-surface-container-low text-on-surface px-4 py-3 rounded-xl font-medium text-sm transition-colors flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-primary">history</span>
+                    <span class="truncate">什麼時候可以感受到胎動？</span>
+                </button>
+                <button class="w-full text-left hover:bg-surface-container-low text-on-surface px-4 py-3 rounded-xl font-medium text-sm transition-colors flex items-center gap-3 group">
+                    <span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-primary">history</span>
+                    <span class="truncate">產檢項目大解析</span>
+                </button>
+            </div>
+        </div>
+        <div class="p-4 border-t border-surface-container-highest/30">
+            <button class="w-full bg-surface-container-low text-on-surface-variant px-4 py-3 rounded-xl font-bold text-sm hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                <span class="material-symbols-outlined text-[18px]">add</span>
+                開啟新對話
+            </button>
+        </div>
+    </aside>
     <!-- Main Canvas -->
     <main class="flex-grow flex flex-col mx-auto px-4 pt-6 pb-32 md:pb-56 gap-6 max-w-md md:max-w-2xl lg:max-w-3xl w-full transition-all duration-500 ease-in-out">
         <!-- AI Chat Layout -->
@@ -256,32 +316,31 @@
             <span class="font-['Be_Vietnam_Pro'] text-[10px] font-medium mt-1">個人</span>
         </a>
     </nav>
-    <!-- Baby Switcher Script -->
+    <!-- Sidebar Toggle Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const switcherBtn = document.getElementById('baby-switcher-btn');
-            const switcherMenu = document.getElementById('baby-switcher-menu');
-            
-            if (switcherBtn && switcherMenu) {
-                switcherBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const isOpen = !switcherMenu.classList.contains('opacity-0');
-                    if (isOpen) {
-                        switcherMenu.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
-                        switcherMenu.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
-                    } else {
-                        switcherMenu.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
-                        switcherMenu.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
-                    }
-                });
+            const hamburgerBtn = document.getElementById('hamburger-menu-btn');
+            const sidebar = document.getElementById('history-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const closeBtn = document.getElementById('close-sidebar-btn');
 
-                document.addEventListener('click', (e) => {
-                    if (!switcherBtn.contains(e.target) && !switcherMenu.contains(e.target)) {
-                        switcherMenu.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
-                        switcherMenu.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
-                    }
-                });
+            function openSidebar() {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
             }
+
+            function closeSidebar() {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.remove('opacity-100', 'pointer-events-auto');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            }
+
+            if(hamburgerBtn) hamburgerBtn.addEventListener('click', openSidebar);
+            if(closeBtn) closeBtn.addEventListener('click', closeSidebar);
+            if(overlay) overlay.addEventListener('click', closeSidebar);
         });
     </script>
 </body>
