@@ -161,27 +161,12 @@
             class="bg-surface-container-lowest rounded-[2.5rem] overflow-hidden shadow-[0_24px_48px_rgba(46,47,45,0.08)]">
             <!-- Interactive Calendar Section -->
             <!-- Interactive Calendar Header & Filters Section -->
-            <div class="px-6 py-4 bg-surface-container-low/50 flex justify-center items-center border-b border-surface-container-highest/30">
-                <!-- Date Navigation (Right, minimal split) -->
-                <div class="relative group z-10 flex items-center gap-1 bg-transparent">
-                    <!-- Year slider -->
-                    <div class="relative flex items-center group/year">
-                        <select class="appearance-none !bg-none bg-transparent text-primary font-bold text-base px-2 py-1.5 outline-none cursor-pointer hover:bg-surface-container-high rounded-xl transition-colors tracking-wide text-center" style="background-image: none;">
-                            <option value="2023">2023年</option>
-                            <option value="2024" selected>2024年</option>
-                            <option value="2025">2025年</option>
-                        </select>
-                    </div>
-                    <!-- Month slider -->
-                    <div class="relative flex items-center group/month">
-                        <select class="appearance-none !bg-none bg-transparent text-primary font-bold text-base px-2 py-1.5 outline-none cursor-pointer hover:bg-surface-container-high rounded-xl transition-colors tracking-wide text-center" style="background-image: none;">
-                            <option value="08">08月</option>
-                            <option value="09">09月</option>
-                            <option value="10" selected>10月</option>
-                            <option value="11">11月</option>
-                            <option value="12">12月</option>
-                        </select>
-                    </div>
+            <div class="px-6 pt-6 pb-2 flex justify-start items-center">
+                <div class="relative inline-flex items-center cursor-pointer group">
+                    <input type="month" value="2024-10" onchange="this.nextElementSibling.innerHTML = this.value.split('-')[0] + '年 ' + parseInt(this.value.split('-')[1], 10) + '月 <span class=\'material-symbols-outlined text-xl group-hover:translate-y-0.5 transition-transform\'>expand_more</span>'" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10">
+                    <h2 class="text-primary font-extrabold text-2xl tracking-tight flex items-center gap-1">
+                        2024年 10月 <span class="material-symbols-outlined text-xl group-hover:translate-y-0.5 transition-transform">expand_more</span>
+                    </h2>
                 </div>
             </div>
             <div class="p-6 pb-8">
