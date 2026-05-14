@@ -15,7 +15,7 @@
                 extend: {
                     "colors": {
                         "on-tertiary-fixed-variant": "#6c3f51",
-                        "secondary": "#2f6275",
+                        "secondary": "#65518a",
                         "surface-dim": "#d4d5d1",
                         "on-surface": "#2e2f2d",
                         "on-primary": "#f8efff",
@@ -36,12 +36,12 @@
                         "on-primary-fixed": "#362459",
                         "surface-container-lowest": "#ffffff",
                         "surface-container-highest": "#ddddd9",
-                        "on-secondary-container": "#1f5467",
+                        "on-secondary-container": "#2e2f2d",
                         "surface-container-high": "#e3e3df",
                         "outline-variant": "#adadab",
                         "primary-fixed-dim": "#c8b1f0",
                         "primary-container": "#d6beff",
-                        "tertiary": "#7d4d5f",
+                        "tertiary": "#65518a",
                         "surface-variant": "#ddddd9",
                         "on-primary-container": "#4b386e",
                         "outline": "#767775",
@@ -62,7 +62,7 @@
                         "secondary-dim": "#215669",
                         "primary-fixed": "#d6beff",
                         "on-primary-fixed-variant": "#544178",
-                        "error": "#b41340",
+                        "error": "#65518a",
                         "primary": "#65518a",
                         "primary-dim": "#59467d"
                     },
@@ -114,18 +114,28 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-    </style>
+    
+        /* Hide number spinner */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+</style>
 </head>
 
 <body class="bg-background text-on-surface min-h-screen flex flex-col">
     <!-- TopAppBar: Matches SCREEN_15 / SCREEN_18 style -->
-    <nav class="sticky top-0 z-40 bg-[#f7f6f3]/70 backdrop-blur-md rounded-b-[3rem] shadow-[0_20px_40px_rgba(46,47,45,0.06)] flex justify-between items-center px-6 py-4 w-full md:px-[calc(50vw-21rem)] lg:px-[calc(50vw-24rem)] transition-all duration-500">
+    <nav class="sticky top-0 z-40 bg-[#f7f6f3]/70 backdrop-blur-md rounded-b-[3rem] shadow-[0_20px_40px_rgba(46,47,45,0.06)] flex justify-between items-center px-6 py-4 w-full md:px-12 transition-all duration-500 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
         <div class="flex items-center gap-3">
             <span class="material-symbols-outlined text-[#65518a] text-2xl" data-icon="child_care">child_care</span>
             <h1 class="text-xl font-bold text-[#65518a] font-['Plus_Jakarta_Sans'] tracking-tight">AuraLink</h1>
         </div>
     </nav>
-    <main class="flex-grow mx-auto w-full px-6 pt-8 pb-32 max-w-md md:max-w-2xl lg:max-w-3xl mx-auto w-full transition-all duration-500 ease-in-out">
+    <main class="flex-grow mx-auto w-full px-6 pt-8 pb-32 max-w-md md:max-w-none w-full transition-all duration-500 ease-in-out md:px-8 lg:px-16 xl:px-32 2xl:px-64">
         <!-- Header Section -->
         <header class="justify-between flex flex-col gap-4 mb-10">
             <div class="flex items-center justify-between">
@@ -142,7 +152,7 @@
                 珍藏每一刻成長的喜悅，從孕育生命到孩子踏出的每一步，都是最動人的篇章。
             </p>
                 <div class="flex items-center gap-3 relative">
-                                    <!-- Baby Switcher Button -->
+            <!-- Baby Switcher Button -->
             <button id="baby-switcher-btn" class="flex items-center gap-1.5 bg-primary/10 px-3 py-1.5 rounded-full hover:bg-primary/20 transition-colors cursor-pointer group">
                 <div class="w-5 h-5 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
                     <span class="material-symbols-outlined text-primary text-[14px]">face</span>
@@ -151,17 +161,65 @@
                 <span class="material-symbols-outlined text-primary text-[18px]">swap_horiz</span>
             </button>
             <!-- Dropdown Menu -->
-            <div id="baby-switcher-menu" class="absolute top-full right-0 mt-2 w-40 bg-white rounded-2xl shadow-xl border border-surface-container-high overflow-hidden opacity-0 pointer-events-none transition-all duration-200 z-50 transform origin-top-right scale-95">
-                <div class="max-h-56 overflow-y-auto hide-scrollbar flex flex-col">
-                    <button class="w-full text-left px-4 py-3 bg-primary/5 flex items-center justify-between border-b border-surface-container-highest cursor-pointer">
-                        <span class="text-sm font-bold text-primary">小寶</span>
-                        <span class="material-symbols-outlined text-primary text-[16px]">check</span>
-                    </button>
-                    <button class="w-full text-left px-4 py-3 hover:bg-primary/5 transition-colors flex items-center justify-between border-b border-surface-container-highest cursor-pointer">
-                        <span class="text-sm font-bold text-on-surface">大寶</span>
-                    </button>
+            <div id="baby-switcher-menu" class="absolute top-full right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-surface-container-high overflow-hidden opacity-0 pointer-events-none transition-all duration-200 z-50 transform origin-top-right scale-95">
+                <div class="max-h-[28rem] overflow-y-auto hide-scrollbar flex flex-col">
+                    <div class="px-4 py-2 bg-surface-container-low/50 border-b border-surface-container-highest">
+                        <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">切換小孩 / 胎數</span>
+                    </div>
+                    
+                    <!-- Baby Item 1 (Active) -->
+                    <div class="w-full text-left px-4 py-3 bg-primary/5 flex items-center justify-between border-b border-surface-container-highest group">
+                        <div class="flex items-center gap-3 cursor-pointer w-full" onclick="window.location.reload()">
+                            <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-primary text-[18px]">face</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold text-primary">小寶</span>
+                                <span class="text-[10px] text-primary/70 font-medium">第二胎</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Baby Item 2 -->
+                    <div class="w-full text-left px-4 py-3 hover:bg-surface-container-low transition-colors flex items-center justify-between border-b border-surface-container-highest group">
+                        <div class="flex items-center gap-3 cursor-pointer w-full" onclick="window.location.reload()">
+                            <div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-on-surface-variant text-[18px]">face_6</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold text-on-surface">大寶</span>
+                                <span class="text-[10px] text-on-surface-variant font-medium">第一胎</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregnancy Item -->
+                    <div class="w-full text-left px-4 py-3 hover:bg-surface-container-low transition-colors flex items-center justify-between border-b border-surface-container-highest group">
+                        <div class="flex items-center gap-3 cursor-pointer w-full" onclick="window.location.reload()">
+                            <div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-on-surface-variant text-[18px]">pregnant_woman</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold text-on-surface">第三胎</span>
+                                <span class="text-[10px] text-on-surface-variant font-medium">懷孕中 (24w)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- New Actions -->
+                    <div class="p-2 bg-surface-container-low/30">
+                        <button onclick="window.location.href='manage_profiles.html'" class="w-full text-left px-3 py-2.5 hover:bg-primary/5 transition-colors flex items-center gap-3 rounded-xl cursor-pointer">
+                            <span class="material-symbols-outlined text-[18px] text-primary">settings</span>
+                            <span class="text-[13px] font-bold text-primary">管理所有胎數與寶寶</span>
+                        </button>
+                        <button onclick="window.location.href='add_pregnancy_baby.html'" class="w-full text-left px-3 py-2.5 hover:bg-primary/5 transition-colors flex items-center gap-3 rounded-xl cursor-pointer">
+                            <span class="material-symbols-outlined text-[18px] text-primary">add_circle</span>
+                            <span class="text-[13px] font-bold text-primary">新增胎數或小孩</span>
+                        </button>
+                    </div>
                 </div>
             </div>
+                </div>
     </header>
         <!-- Vertical Timeline: Restructured for continuous flow -->
         <section class="relative">
@@ -176,7 +234,7 @@
                     <div class="mb-4">
                         <div class="flex items-center gap-3 mb-1">
                             <span
-                                class="text-xs font-bold text-secondary uppercase tracking-widest bg-secondary-container/30 px-2 py-0.5 rounded-full">懷孕記錄
+                                class="text-xs font-bold text-primary uppercase tracking-widest bg-primary-container/30 px-2 py-0.5 rounded-full">懷孕記錄
                                 • W8</span>
                         </div>
                         <h3 class="text-xl font-bold text-on-surface">第一次聽見心跳</h3>
@@ -199,7 +257,7 @@
                     <div class="mb-4">
                         <div class="flex items-center gap-3 mb-1">
                             <span
-                                class="text-xs font-bold text-secondary uppercase tracking-widest bg-secondary-container/30 px-2 py-0.5 rounded-full">懷孕記錄
+                                class="text-xs font-bold text-primary uppercase tracking-widest bg-primary-container/30 px-2 py-0.5 rounded-full">懷孕記錄
                                 • W24</span>
                         </div>
                         <h3 class="text-xl font-bold text-on-surface">溫柔的胎動</h3>
@@ -217,12 +275,12 @@
                 <!-- Birth Milestone -->
                 <article class="relative pl-14">
                     <div
-                        class="absolute left-[18px] top-1 w-[14px] h-[14px] rounded-full bg-tertiary border-4 border-background z-10 shadow-sm">
+                        class="absolute left-[18px] top-1 w-[14px] h-[14px] rounded-full bg-primary border-4 border-background z-10 shadow-sm">
                     </div>
                     <div class="mb-4">
                         <div class="flex items-center gap-3 mb-1">
                             <span
-                                class="text-xs font-bold text-tertiary uppercase tracking-widest bg-tertiary-container/30 px-2 py-0.5 rounded-full">成長紀錄
+                                class="text-xs font-bold text-primary uppercase tracking-widest bg-primary-container/30 px-2 py-0.5 rounded-full">成長紀錄
                                 • M0</span>
                         </div>
                         <h3 class="text-xl font-bold text-on-surface">歡迎來到這個世界</h3>
@@ -240,12 +298,12 @@
                 <!-- Growth Milestone 1 -->
                 <article class="relative pl-14">
                     <div
-                        class="absolute left-[18px] top-1 w-[14px] h-[14px] rounded-full bg-tertiary border-4 border-background z-10 shadow-sm">
+                        class="absolute left-[18px] top-1 w-[14px] h-[14px] rounded-full bg-primary border-4 border-background z-10 shadow-sm">
                     </div>
                     <div class="mb-4">
                         <div class="flex items-center gap-3 mb-1">
                             <span
-                                class="text-xs font-bold text-tertiary uppercase tracking-widest bg-tertiary-container/30 px-2 py-0.5 rounded-full">成長紀錄
+                                class="text-xs font-bold text-primary uppercase tracking-widest bg-primary-container/30 px-2 py-0.5 rounded-full">成長紀錄
                                 • M6</span>
                         </div>
                         <h3 class="text-xl font-bold text-on-surface">第一口副食品</h3>
@@ -270,15 +328,15 @@
                 <span class="text-2xl font-bold text-on-primary-container">1,240</span>
                 <span class="text-xs text-on-primary-container/70 font-bold">張珍貴照片</span>
             </div>
-            <div class="bg-tertiary-container/20 rounded-xl p-6 flex flex-col justify-center items-center text-center">
-                <span class="material-symbols-outlined text-tertiary text-4xl mb-2" data-icon="favorite">favorite</span>
-                <span class="text-2xl font-bold text-on-tertiary-container">82</span>
-                <span class="text-xs text-on-tertiary-container/70 font-bold">個重點時刻</span>
+            <div class="bg-primary-container/20 rounded-xl p-6 flex flex-col justify-center items-center text-center">
+                <span class="material-symbols-outlined text-primary text-4xl mb-2" data-icon="favorite">favorite</span>
+                <span class="text-2xl font-bold text-on-primary-container">82</span>
+                <span class="text-xs text-on-primary-container/70 font-bold">個重點時刻</span>
             </div>
         </section>
     </main>
     <!-- Bottom Navigation Bar -->
-    <nav class="fixed bottom-0 left-0 w-full md:w-[600px] flex justify-around items-center px-4 pb-6 pt-3 bg-[#f7f6f3]/80 backdrop-blur-xl z-50 rounded-t-[3rem] shadow-[0_-20px_40px_rgba(46,47,45,0.06)] md:left-1/2 md:-translate-x-1/2 md:bottom-8 md:rounded-[2.5rem] md:pt-4 md:pb-4 md:shadow-2xl md:border md:border-surface-container-high/50 transition-all duration-500">
+    <nav class="fixed bottom-0 left-0 w-full md:w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#f7f6f3]/80 backdrop-blur-xl z-50 rounded-t-[3rem] shadow-[0_-10px_40px_rgba(46,47,45,0.06)] md:bottom-0 md:rounded-none md:pt-4 md:pb-4 md:shadow-2xl md:border md:border-surface-container-high/50 transition-all duration-500 ">
         <a href="index.html"
             class="flex flex-col items-center justify-center bg-[#d6beff] text-[#65518a] rounded-[1.5rem] px-5 py-2 scale-90 transition-transform duration-300 cursor-pointer">
             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>

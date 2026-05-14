@@ -15,7 +15,7 @@
                     colors: {
                         "primary": "#65518a",
                         "primary-container": "#d6beff",
-                        "secondary": "#2f6275",
+                        "secondary": "#65518a",
                         "secondary-container": "#b2e4fb",
                         "background": "#f7f6f3",
                         "surface": "#f7f6f3",
@@ -42,12 +42,22 @@
         h1, h2, h3, .headline { font-family: 'Plus Jakarta Sans', sans-serif; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    </style>
+    
+        /* Hide number spinner */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+</style>
 </head>
 <body class="bg-surface text-on-surface min-h-screen">
     <!-- Top AppBar -->
-    <nav class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-surface-container-highest/20 px-6 py-4 w-full transition-all duration-500">
-        <div class="flex items-center gap-4 max-w-md md:max-w-2xl lg:max-w-3xl mx-auto w-full">
+    <nav class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-surface-container-highest/20 px-6 py-4 w-full transition-all duration-500 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
+        <div class="flex items-center gap-4 max-w-md md:max-w-none w-full mx-auto">
             <button onclick="window.history.back()" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-lowest text-primary hover:bg-primary-container transition-colors shadow-sm cursor-pointer">
                 <span class="material-symbols-outlined">arrow_back</span>
             </button>
@@ -55,7 +65,7 @@
         </div>
     </nav>
     
-    <main class="pt-8 px-4 max-w-md md:max-w-2xl lg:max-w-3xl mx-auto w-full pb-32">
+    <main class="pt-8 px-4 max-w-md md:max-w-none mx-auto w-full pb-32 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
         <div class="mb-6">
             <div>
                 <h2 class="text-xl font-bold text-on-surface mb-1 flex items-center gap-2">
@@ -71,13 +81,13 @@
                 
                 <!-- Milestone 1: Done -->
                 <div class="relative">
-                    <div class="absolute -left-[30px] top-0 w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-white z-10 shadow-sm ring-4 ring-secondary-container/50">
+                    <div class="absolute -left-[30px] top-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white z-10 shadow-sm ring-4 ring-primary-container/50">
                         <span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">check</span>
                     </div>
                     <div class="flex flex-col gap-2">
                         <div class="flex justify-between items-start">
                             <h4 class="font-bold text-on-surface text-lg">抬頭自如</h4>
-                            <span class="text-[10px] font-bold text-secondary bg-secondary-container px-2.5 py-1 rounded-full">3 個月</span>
+                            <span class="text-[10px] font-bold text-primary bg-primary-container px-2.5 py-1 rounded-full">3 個月</span>
                         </div>
                         <p class="text-on-surface-variant text-sm">趴著時能穩定支撐頭部並觀察環境，持續時間變長了！</p>
                         <div class="flex items-center gap-1.5 text-xs text-outline font-medium mt-1">
@@ -89,13 +99,13 @@
 
                 <!-- Milestone 2: Done -->
                 <div class="relative">
-                    <div class="absolute -left-[30px] top-0 w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-white z-10 shadow-sm ring-4 ring-secondary-container/50">
+                    <div class="absolute -left-[30px] top-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white z-10 shadow-sm ring-4 ring-primary-container/50">
                         <span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">check</span>
                     </div>
                     <div class="flex flex-col gap-2">
                         <div class="flex justify-between items-start">
                             <h4 class="font-bold text-on-surface text-lg">第一次翻身</h4>
-                            <span class="text-[10px] font-bold text-secondary bg-secondary-container px-2.5 py-1 rounded-full">4 個月</span>
+                            <span class="text-[10px] font-bold text-primary bg-primary-container px-2.5 py-1 rounded-full">4 個月</span>
                         </div>
                         <p class="text-on-surface-variant text-sm">成功從仰躺翻轉成趴姿，而且看起來非常得意。</p>
                         <div class="flex items-center gap-1.5 text-xs text-outline font-medium mt-1 mb-2">
@@ -123,10 +133,6 @@
                             <span class="text-[10px] font-bold text-primary bg-primary-container px-2.5 py-1 rounded-full">7 個月</span>
                         </div>
                         <p class="text-on-surface-variant text-sm border-l-2 border-primary-container pl-3 py-1">不需支撐可坐立超過 5 分鐘，正在穩健學習中。</p>
-                        <div class="flex gap-2 mt-2">
-                            <button class="bg-primary text-white py-2.5 px-5 rounded-xl text-xs font-bold shadow-sm hover:bg-primary-dim transition-colors cursor-pointer">點擊紀錄達成</button>
-                            <button class="bg-surface-container-high text-primary py-2.5 px-5 rounded-xl text-xs font-bold hover:bg-surface-container-highest transition-colors cursor-pointer">延後追蹤</button>
-                        </div>
                     </div>
                 </div>
 

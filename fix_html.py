@@ -77,17 +77,17 @@ for filepath in glob.glob(os.path.join(directory, '*.html')):
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # The block starts with "<!-- Baby Switcher Button -->" and ends with the closing div of "<!-- Dropdown Menu -->"
-    # We find "<!-- Baby Switcher Button -->" up to the second "</div>\n            </div>" or something similar.
-    # A safer regex:
-    pattern = r'<!-- Baby Switcher Button -->.*?<!-- Dropdown Menu -->.*?<div id="baby-switcher-menu".*?>.*?</div>\s*</div>'
+    pattern = r'([ \t]*)<div class="flex items-center gap-3 relative">.*?</header>'
     
-    if re.search(pattern, content, re.DOTALL):
-        new_content = re.sub(pattern, simplified_switcher, content, flags=re.DOTALL)
-        if new_content != content:
-            with open(filepath, 'w', encoding='utf-8') as f:
-                f.write(new_content)
-            print(f'Simplified switcher in {os.path.basename(filepath)}')
-            changed += 1
+    def repl(match):
+        indent = match.group(1)
+        return f'{indent}<div class="flex items-center gap-3 relative">\n{simplified_switcher}\n{indent}</div>\n    </header>'
+    
+    new_content, count = re.subn(pattern, repl, content, flags=re.DOTALL)
+    if count > 0:
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+        print(f'Fixed header in {os.path.basename(filepath)}')
+        changed += 1
 
-print(f'Total {changed} files updated.')
+print(f'Total {changed} files fixed.')

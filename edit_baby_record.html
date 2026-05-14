@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>新增成長紀錄 - AuraLink</title>
+    <title>修改成長紀錄 - AuraLink</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap"
@@ -140,7 +140,7 @@
             <button onclick="window.location.href='babyinformation.html'" class="p-2 hover:bg-[#f1f1ee]/50 transition-colors active:scale-95 duration-200 rounded-full mr-2">
                 <span class="material-symbols-outlined text-[#65518a]">arrow_back</span>
             </button>
-            <h1 class="font-['Plus_Jakarta_SANS'] font-semibold tracking-tight text-lg text-[#65518a]">新增成長紀錄</h1>
+            <h1 class="font-['Plus_Jakarta_SANS'] font-semibold tracking-tight text-lg text-[#65518a]">修改成長紀錄</h1>
         </div>
             <div class="flex items-center gap-3 relative">
             <!-- Baby Switcher Button -->
@@ -214,12 +214,12 @@
     </header>
     <main class="pt-24 pb-32 px-6 max-w-2xl md:max-w-none mx-auto space-y-8 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
         
-        <!-- Upload Area -->
-        <div class="bg-surface-container-lowest border-2 border-dashed border-primary-container rounded-[2rem] p-8 flex flex-col items-center justify-center gap-3 cursor-pointer hover:bg-primary/5 transition-all aspect-[4/3] md:aspect-video shadow-sm">
-            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                <span class="material-symbols-outlined text-2xl">photo_camera</span>
+                <!-- Upload Area -->
+        <div class="bg-surface-container-lowest border-2 border-primary-container rounded-[2rem] p-0 flex flex-col items-center justify-center gap-3 cursor-pointer hover:bg-primary/5 transition-all aspect-[4/3] md:aspect-video shadow-sm overflow-hidden relative group">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsFmTxE1jrirW8qMVp2ndiK0oWNDMTQsnAUPiRxPPGnM7ZPEB15HyG94PTXSO66mK-eVt_ZEgpWCGGXcvKrw8__Zv9F5sQ_k1f3y_2YFmJIZt4XP7lFWXyHLuUeAWP3NiaTRDFEhiTS3p1BHbvzrzxxqirT-nJnKBOwvZ0Udy3yHJRDNWrEIEt-CEQh_LSa5odUOxxP8h7tmwrNvhv-tijRUgdZj84sdWZUscx3oEi31W1dUmyPg4hSxXscuuUawfsKm0AU5JOlWmH" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-bold">
+                <span class="material-symbols-outlined">edit</span> 更換照片
             </div>
-            <p class="text-sm font-bold text-on-surface-variant">點擊上傳成長照片</p>
         </div>
 
         <!-- Date Selector -->
@@ -239,19 +239,19 @@
             <div class="grid grid-cols-2 gap-4">
                 <div class="bg-[#ebf4fa] p-5 rounded-3xl relative flex flex-col justify-center items-center gap-2 h-24">
                     <span class="text-[10px] font-bold text-on-surface-variant/80">身高 (CM)</span>
-                    <input class="bg-transparent text-center border-none p-0 text-3xl font-headline font-bold text-on-surface/50 w-full focus:ring-0 placeholder:text-on-surface/30" type="number" placeholder="0.0" />
+                    <input class="bg-transparent text-center border-none p-0 text-3xl font-headline font-bold text-on-surface/50 w-full focus:ring-0 placeholder:text-on-surface/30" type="number" placeholder="0.0" value="65.0" />
                 </div>
                 <div class="bg-[#eaf6f9] p-5 rounded-3xl relative flex flex-col justify-center items-center gap-2 h-24">
                     <span class="text-[10px] font-bold text-on-surface-variant/80">體重 (KG)</span>
-                    <input class="bg-transparent text-center border-none p-0 text-3xl font-headline font-bold text-on-surface/50 w-full focus:ring-0 placeholder:text-on-surface/30" type="number" placeholder="0.0" />
+                    <input class="bg-transparent text-center border-none p-0 text-3xl font-headline font-bold text-on-surface/50 w-full focus:ring-0 placeholder:text-on-surface/30" type="number" placeholder="0.0" value="7.2" />
                 </div>
                 <div class="bg-[#ebf4fa] p-5 rounded-3xl relative flex flex-col justify-center items-center gap-2 h-24">
                     <span class="text-[10px] font-bold text-on-surface-variant/80">頭圍 (CM)</span>
-                    <input class="bg-transparent text-center border-none p-0 text-3xl font-headline font-bold text-on-surface/50 w-full focus:ring-0 placeholder:text-on-surface/30" type="number" placeholder="0.0" />
+                    <input class="bg-transparent text-center border-none p-0 text-3xl font-headline font-bold text-on-surface/50 w-full focus:ring-0 placeholder:text-on-surface/30" type="number" placeholder="0.0" value="42.5" />
                 </div>
                 <div class="bg-[#eaf6f9] p-5 rounded-3xl relative flex flex-col justify-center items-center gap-2 h-24">
                     <span class="text-[10px] font-bold text-on-surface-variant/80">胸圍 (CM)</span>
-                    <input class="bg-transparent text-center border-none p-0 text-3xl font-headline font-bold text-on-surface/50 w-full focus:ring-0 placeholder:text-on-surface/30" type="number" placeholder="0.0" />
+                    <input class="bg-transparent text-center border-none p-0 text-3xl font-headline font-bold text-on-surface/50 w-full focus:ring-0 placeholder:text-on-surface/30" type="number" placeholder="0.0" value="34.0" />
                 </div>
             </div>
         </div>
@@ -274,7 +274,7 @@
         <!-- Notes Section -->
         <div class="space-y-4">
             <label class="block text-sm font-bold text-on-surface-variant px-1">成長筆記</label>
-            <textarea class="w-full bg-surface-container-lowest border-none rounded-[2rem] p-6 h-40 focus:ring-2 focus:ring-primary-container text-on-surface resize-none custom-shadow placeholder:text-on-surface-variant/40 placeholder:font-medium" placeholder="寫下對寶寶的心情或今天發生的趣事..."></textarea>
+            <textarea class="w-full bg-surface-container-lowest border-none rounded-[2rem] p-6 h-40 focus:ring-2 focus:ring-primary-container text-on-surface resize-none custom-shadow placeholder:text-on-surface-variant/40 placeholder:font-medium" placeholder="寫下對寶寶的心情或今天發生的趣事...">寶寶今天特別開心，會抓著小木馬玩很久！</textarea>
         </div>
 
         <!-- Save Button -->

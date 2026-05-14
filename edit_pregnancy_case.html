@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>新增胎數與小孩 - AuraLink</title>
+    <title>編輯懷孕胎數 - AuraLink</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -16,7 +16,6 @@
                         "primary": "#65518a",
                         "primary-container": "#d6beff",
                         "secondary": "#65518a",
-                        "secondary-container": "#b2e4fb",
                         "background": "#f7f6f3",
                         "surface": "#f7f6f3",
                         "on-surface": "#2e2f2d",
@@ -60,15 +59,18 @@
             <button onclick="window.history.back()" class="p-2 hover:bg-surface-container-low transition-colors active:scale-95 duration-200 rounded-full cursor-pointer">
                 <span class="material-symbols-outlined text-primary">arrow_back</span>
             </button>
-            <h1 class="font-headline font-semibold tracking-tight text-lg text-primary">新增胎數與小孩</h1>
+            <h1 class="font-headline font-semibold tracking-tight text-lg text-primary">編輯懷孕胎數</h1>
         </div>
+        <button onclick="if(confirm('確定要刪除此胎數紀錄嗎？此動作無法復原。')) window.history.back();" class="text-primary font-bold text-sm hover:bg-primary/10 px-3 py-1.5 rounded-full transition-colors cursor-pointer flex items-center gap-1">
+            <span class="material-symbols-outlined text-[18px]">delete</span>
+            刪除
+        </button>
     </header>
 
     <!-- Main Content -->
     <main class="pt-24 px-4 mx-auto max-w-md md:max-w-none w-full md:px-8 lg:px-16 xl:px-32 2xl:px-64">
         <form onsubmit="event.preventDefault(); window.history.back();" class="space-y-6">
             
-            <!-- Section 1: Pregnancy Info -->
             <section class="bg-surface-container-lowest rounded-3xl p-6 shadow-sm border border-surface-container-high">
                 <div class="flex items-center gap-2 mb-6">
                     <span class="material-symbols-outlined text-primary">pregnant_woman</span>
@@ -76,27 +78,36 @@
                 </div>
 
                 <div class="space-y-5">
+                    <!-- 胎次名稱 -->
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider pl-1">胎次名稱 (選填)</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50">label</span>
+                            <input type="text" value="第三胎" placeholder="例如：大寶、二寶" class="w-full bg-surface-container-low border-none rounded-xl pl-12 pr-4 py-3.5 text-on-surface focus:ring-2 focus:ring-primary-container transition-all text-sm outline-none font-medium" />
+                        </div>
+                    </div>
+
                     <!-- 最後月經日期 -->
                     <div class="space-y-2">
                         <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider pl-1">最後月經日期</label>
                         <div class="relative">
                             <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50">event</span>
-                            <input type="date" required class="w-full bg-surface-container-low border-none rounded-xl pl-12 pr-4 py-3.5 text-on-surface focus:ring-2 focus:ring-primary-container transition-all text-sm outline-none font-medium" />
+                            <input type="date" value="2024-01-15" required class="w-full bg-surface-container-low border-none rounded-xl pl-12 pr-4 py-3.5 text-on-surface focus:ring-2 focus:ring-primary-container transition-all text-sm outline-none font-medium" />
                         </div>
                     </div>
 
                     <!-- 預產期 -->
                     <div class="space-y-2">
-                        <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider pl-1">預產期</label>
+                        <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider pl-1">預產期 (自動計算或手動填寫)</label>
                         <div class="relative">
                             <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">calendar_today</span>
-                            <input type="date" required class="w-full bg-primary/5 border border-primary/20 rounded-xl pl-12 pr-4 py-3.5 text-primary focus:ring-2 focus:ring-primary-container transition-all text-sm outline-none font-bold" />
+                            <input type="date" value="2024-10-22" required class="w-full bg-primary/5 border border-primary/20 rounded-xl pl-12 pr-4 py-3.5 text-primary focus:ring-2 focus:ring-primary-container transition-all text-sm outline-none font-bold" />
                         </div>
                     </div>
 
                     <!-- 加入碼 -->
                     <div class="space-y-2">
-                        <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider pl-1">加入碼 (供家人綁定)</label>
+                        <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider pl-1">加入碼 (供其他家人綁定)</label>
                         <div class="relative flex items-center">
                             <span class="material-symbols-outlined absolute left-4 text-on-surface-variant/50">qr_code</span>
                             <input type="text" value="A8X2B9" readonly class="w-full bg-surface-container-low/50 border-none rounded-xl pl-12 pr-12 py-3.5 text-on-surface text-sm outline-none font-bold tracking-widest" />
@@ -108,44 +119,10 @@
                 </div>
             </section>
 
-            <!-- Section 2: Baby Info -->
-            <section class="bg-surface-container-lowest rounded-3xl p-6 shadow-sm border border-surface-container-high">
-                <div class="flex items-center gap-2 mb-6">
-                    <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                        <span class="material-symbols-outlined text-primary text-[20px]">child_care</span>
-                    </div>
-                    <h2 class="font-headline font-bold text-lg">寶寶基本資料</h2>
-                </div>
-
-                <div class="space-y-5">
-                    <!-- 嬰兒暱稱 -->
-                    <div class="space-y-2">
-                        <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider pl-1">嬰兒暱稱</label>
-                        <div class="relative">
-                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50">face</span>
-                            <input type="text" required placeholder="例如：小寶、球球" class="w-full bg-surface-container-low border-none rounded-xl pl-12 pr-4 py-3.5 text-on-surface focus:ring-2 focus:ring-primary-container transition-all text-sm outline-none font-medium placeholder:text-on-surface-variant/40" />
-                        </div>
-                    </div>
-
-                    <!-- 本次胎兒數 -->
-                    <div class="space-y-2">
-                        <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider pl-1">本次胎兒數</label>
-                        <div class="relative">
-                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50">child_care</span>
-                            <select class="w-full bg-surface-container-low bg-none border-none rounded-xl pl-12 pr-4 py-3.5 text-on-surface focus:ring-2 focus:ring-primary-container transition-all text-sm outline-none font-medium appearance-none">
-                                <option value="1" selected>單胞胎 (1 個寶寶)</option>
-                                <option value="2">雙胞胎 (2 個寶寶)</option>
-                                <option value="3">三胞胎或以上</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <!-- Submit Button -->
             <button type="submit" class="w-full py-4 bg-primary text-white rounded-2xl font-headline font-bold text-base shadow-[0_10px_20px_rgba(101,81,138,0.2)] hover:scale-[1.02] active:scale-95 transition-all mt-6 cursor-pointer flex items-center justify-center gap-2">
-                <span class="material-symbols-outlined text-xl">check_circle</span>
-                儲存資訊
+                <span class="material-symbols-outlined text-xl">save</span>
+                儲存變更
             </button>
         </form>
     </main>

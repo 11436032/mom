@@ -15,7 +15,7 @@
                     colors: {
                         "primary": "#65518a",
                         "primary-container": "#d6beff",
-                        "secondary": "#2f6275",
+                        "secondary": "#65518a",
                         "background": "#f7f6f3",
                         "surface": "#f7f6f3",
                         "on-surface": "#2e2f2d",
@@ -25,7 +25,7 @@
                         "surface-container-low": "#f1f1ee",
                         "surface-container-high": "#e3e3df",
                         "surface-container-highest": "#ddddd9",
-                        "error": "#b41340",
+                        "error": "#65518a",
                     },
                     fontFamily: {
                         "headline": ["Plus Jakarta Sans"],
@@ -40,11 +40,21 @@
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
         body { font-family: 'Be Vietnam Pro', sans-serif; background-color: #f7f6f3; color: #2e2f2d; overflow-x: hidden; }
         h1, h2, h3, .headline { font-family: 'Plus Jakarta Sans', sans-serif; }
-    </style>
+    
+        /* Hide number spinner */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+</style>
 </head>
 <body class="bg-surface text-on-surface min-h-screen pb-32">
     <!-- Header Section -->
-    <header class="justify-between fixed top-0 w-full z-50 bg-[#f7f6f3]/70 backdrop-blur-md flex items-center px-6 h-16 w-full shadow-sm">
+    <header class="justify-between fixed top-0 w-full z-50 bg-[#f7f6f3]/70 backdrop-blur-md flex items-center px-6 h-16 w-full shadow-sm md:px-8 lg:px-16 xl:px-32 2xl:px-64">
         <div class="flex items-center gap-3">
             <button onclick="window.history.back()" class="p-2 hover:bg-surface-container-low transition-colors active:scale-95 duration-200 rounded-full cursor-pointer">
                 <span class="material-symbols-outlined text-primary">arrow_back</span>
@@ -54,7 +64,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="pt-24 px-4 mx-auto max-w-md md:max-w-2xl lg:max-w-3xl w-full">
+    <main class="pt-24 px-4 mx-auto max-w-md md:max-w-none w-full md:px-8 lg:px-16 xl:px-32 2xl:px-64">
         <form onsubmit="event.preventDefault(); window.history.back();" class="space-y-6">
             
             <section class="bg-surface-container-lowest rounded-3xl p-6 shadow-sm border border-surface-container-high">
