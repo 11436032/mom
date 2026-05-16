@@ -636,6 +636,29 @@
             });
         }
 
+        window.toggleChecklistItem = function(date, index) {
+            if(checklists[date] && checklists[date][index]) {
+                checklists[date][index].done = !checklists[date][index].done;
+                
+                const extraItems = document.getElementById('extra-checklist-items');
+                const isExpanded = extraItems && !extraItems.classList.contains('hidden');
+                
+                const activeBtn = document.querySelector('.date-btn.bg-primary');
+                if(activeBtn) activeBtn.click();
+                
+                if (isExpanded) {
+                    const newExtraItems = document.getElementById('extra-checklist-items');
+                    const clToggleBtn = document.getElementById('checklist-toggle-btn');
+                    if (newExtraItems && clToggleBtn) {
+                        newExtraItems.classList.remove('hidden');
+                        newExtraItems.classList.add('flex');
+                        clToggleBtn.querySelector('span:first-child').innerText = '收起';
+                        clToggleBtn.querySelector('.material-symbols-outlined').innerText = 'keyboard_arrow_up';
+                    }
+                }
+            }
+        };
+
         dateBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 // Determine active/inactive baseline classes
@@ -664,13 +687,13 @@
                 items.forEach((item, index) => {
                     if (item.done) completed++;
                     const checkIconHtml = item.done ? 
-                        `<div class="w-6 h-6 rounded-md bg-[#d6beff] flex items-center justify-center shrink-0">
+                        `<div class="w-6 h-6 rounded-md bg-[#d6beff] flex items-center justify-center shrink-0 cursor-pointer" onclick="toggleChecklistItem('${date}', ${index})">
                             <span class="material-symbols-outlined text-primary text-sm font-bold">check</span>
                         </div>` : 
-                        `<div class="w-6 h-6 rounded-md border-2 border-[#d6beff] shrink-0"></div>`;
+                        `<div class="w-6 h-6 rounded-md border-2 border-[#d6beff] shrink-0 cursor-pointer" onclick="toggleChecklistItem('${date}', ${index})"></div>`;
                     const textHtml = item.done ? 
-                        `<p class="text-xs font-semibold text-on-surface/50 line-through">${item.text}</p>` : 
-                        `<p class="text-xs font-semibold text-on-surface">${item.text}</p>`;
+                        `<p class="text-xs font-semibold text-on-surface/50 line-through cursor-pointer" onclick="toggleChecklistItem('${date}', ${index})">${item.text}</p>` : 
+                        `<p class="text-xs font-semibold text-on-surface cursor-pointer" onclick="toggleChecklistItem('${date}', ${index})">${item.text}</p>`;
 
                     const itemHtml = `
                         <div class="flex items-center gap-4">
@@ -681,9 +704,6 @@
                                                         <div class="flex gap-1">
                                 <button onclick="window.location.href='edit_checklist_item.html'" class="text-on-surface-variant/50 hover:bg-primary/10 hover:text-primary p-1 rounded-full transition-colors cursor-pointer">
                                     <span class="material-symbols-outlined text-[18px]">edit</span>
-                                </button>
-                                <button class="text-on-surface-variant/50 hover:bg-primary/10 hover:text-primary p-1 rounded-full transition-colors cursor-pointer">
-                                    <span class="material-symbols-outlined text-[18px]">delete</span>
                                 </button>
                             </div>
                         </div>
@@ -739,6 +759,12 @@
                     behavior: 'instant'
                 });
                 sessionStorage.removeItem('scrollPos');
+            }
+            
+            // Initialize the checklist with the active date
+            const activeDateBtn = document.querySelector('.date-btn.bg-primary');
+            if(activeDateBtn) {
+                activeDateBtn.click();
             }
         });
     </script>
